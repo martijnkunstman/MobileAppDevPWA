@@ -4,6 +4,15 @@ let console3 = document.getElementById("console3");
 let console4 = document.getElementById("console4");
 let console5 = document.getElementById("console5");
 
+let acl = new Accelerometer({frequency: 60});
+acl.addEventListener('reading', () => {
+    console1.innerHTML="Acceleration along the X-axis " + acl.x;
+    console2.innerHTML="Acceleration along the Y-axis " + acl.y;
+    console3.innerHTML="Acceleration along the Z-axis " + acl.z;
+});
+
+acl.start();
+
 console5.innerHTML ="ok";
 
 navigator.permissions.query({ name: 'ambient-light-sensor' }).then(result => {
