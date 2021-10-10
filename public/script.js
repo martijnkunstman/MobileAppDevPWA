@@ -6,19 +6,20 @@ let z = 0;
 let acl = new Accelerometer({ frequency: 60 });
 acl.addEventListener('reading', () => {
     
+    let gravity = 9.8;
     let coefficient = 0.05;
 
-    x = x + ((acl.x - x) * coefficient);
-    y = y + ((acl.y - y) * coefficient);
-    z = z + ((acl.z - z) * coefficient);
+    x = x + ((acl.x - x) * coefficient) / gravity;
+    y = y + ((acl.y - y) * coefficient) / gravity;
+    z = z + ((acl.z - z) * coefficient) / gravity;
 
     document.getElementById("myRangeX").value = Math.round(x * 10) / 10;
     document.getElementById("myRangeY").value = Math.round(y * 10) / 10;
     document.getElementById("myRangeZ").value = Math.round(z * 10) / 10;
    
-    document.getElementById("vx").innerHTML = Math.round(acl.x * 10) / 10;
-    document.getElementById("vy").innerHTML = Math.round(acl.y * 10) / 10;
-    document.getElementById("vz").innerHTML = Math.round(acl.z * 10) / 10;
+    document.getElementById("vx").innerHTML = Math.round(x * 10) / 10;
+    document.getElementById("vy").innerHTML = Math.round(y * 10) / 10;
+    document.getElementById("vz").innerHTML = Math.round(z * 10) / 10;
 
 });
 
