@@ -1,41 +1,81 @@
-let console1 = document.getElementById("console1");
-let console2 = document.getElementById("console2");
-let console3 = document.getElementById("console3");
-let console4 = document.getElementById("console4");
-let console5 = document.getElementById("console5");
-
-let acl = new Accelerometer({frequency: 60});
+let acl = new Accelerometer({ frequency: 60 });
 acl.addEventListener('reading', () => {
-    console1.innerHTML="Acceleration along the X-axis " + acl.x;
-    console2.innerHTML="Acceleration along the Y-axis " + acl.y;
-    console3.innerHTML="Acceleration along the Z-axis " + acl.z;
+    document.getElementById("myRangeX").value = acl.x;
+    document.getElementById("myRangeY").value = acl.y;
+    document.getElementById("myRangeZ").value = acl.z;
 });
 
 acl.start();
 
-console5.innerHTML ="ok";
+// three.js webgl - cube
+// from https://webglfundamentals.org/webgl/lessons/resources/three-js-cube-with-lights.html
 
-navigator.permissions.query({ name: 'ambient-light-sensor' }).then(result => {
-    if (result.state === 'denied') {
-        console1.innerHTML='Permission to use ambient light sensor is denied.';
-        console.log('Permission to use ambient light sensor is denied.');
-        return;
-    }
 
-    
-    const als = new AmbientLightSensor({frequency: 20});
-    als.addEventListener('activate', () => console2.innerHTML='Ready to measure EV.');
-    als.addEventListener('error', event => console3.innerHTML=`Error: ${event.error.name}`);
-    als.addEventListener('reading', () => {
-        // Defaut ISO value.
-        const ISO = 100;
-        // Incident-light calibration constant.
-        const C = 250;
+var camera, scene, renderer;
+var mesh;
 
-        let EV = Math.round(Math.log2((als.illuminance * ISO) / C));
-        console.log(`Exposure Value (EV) is: ${EV}`);
-        console4.innerHTML=`Exposure Value (EV) is: ${EV}`;
-    });
+init();
+animate();
 
-    als.start();
-});
+function init() {
+  // Setup
+  renderer = new THREE.WebGLRenderer({canvas: document.querySelector("#canvas")});
+
+  // Make and setup a camera.
+  camera = new THREE.PerspectiveCamera(70, 1, 1, 1000);
+  camera.position.z = 400;
+
+  // Make a scene
+  scene = new THREE.Scene();
+
+  // Make a cube.
+  var geometry = new THREE.BoxGeometry(200, 200, 200);
+
+  // Make a material
+  var material = new THREE.MeshPhongMaterial({
+    ambient: 0x00505f,
+    color: 0xFFC90,
+    specular: 0xffffff,
+    shininess: 50,
+    shading: THREE.SmoothShading
+  });
+
+  // Create a mesh based on the geometry and material
+  mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
+
+  // Add 2 lights.
+  var light1 = new THREE.PointLight(0xff0040, 2, 0);
+  light1.position.set(200, 100, 300);
+  scene.add(light1);
+
+  var light2 = new THREE.PointLight(0x0040ff, 2, 0);
+  light2.position.set(-200, 100, 300);
+  scene.add(light2);
+
+}
+
+function resize() {
+  var width = renderer.domElement.clientWidth;
+  var height = renderer.domElement.clientHeight;
+  if (renderer.domElement.width !== width || renderer.domElement.height !== height) {
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+  }
+}
+
+function animate() {
+  resize();
+  //mesh.rotation.x += 0.005;
+  //mesh.rotation.y += 0.01;
+
+  mesh.rotation.x = document.getElementById('myRangeX').value*Math.PI;
+  mesh.rotation.y = document.getElementById('myRangeY').value*Math.PI;
+  mesh.rotation.z = document.getElementById('myRangeZ').value*Math.PI;
+
+
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+
