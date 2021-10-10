@@ -16,9 +16,9 @@ acl.addEventListener('reading', () => {
     document.getElementById("myRangeY").value = Math.round(y * 10) / 10;
     document.getElementById("myRangeZ").value = Math.round(z * 10) / 10;
    
-    document.getElementById("vx").innerHTML = Math.round(x * 10) / 10;
-    document.getElementById("vy").innerHTML = Math.round(y * 10) / 10;
-    document.getElementById("vz").innerHTML = Math.round(z * 10) / 10;
+    document.getElementById("vx").innerHTML = Math.round(acl.x * 10) / 10;
+    document.getElementById("vy").innerHTML = Math.round(acl.y * 10) / 10;
+    document.getElementById("vz").innerHTML = Math.round(acl.z * 10) / 10;
 
 });
 
