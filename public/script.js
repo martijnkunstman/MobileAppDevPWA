@@ -10,8 +10,8 @@ acl.addEventListener('reading', () => {
     let coefficient = 0.05;
 
     x = x + ((acl.x - x) * coefficient);
-    y = y + ((acl.y - y) * coefficient);
-    z = z + ((acl.z - z) * coefficient);
+    //y = y + ((acl.y - y) * coefficient);
+    //z = z + ((acl.z - z) * coefficient);
 
     document.getElementById("myRangeX").value = Math.round(x * 10) / 10/gravity;
     document.getElementById("myRangeY").value = Math.round(y * 10) / 10/gravity;
@@ -89,8 +89,8 @@ function animate() {
   //mesh.rotation.y += 0.01;
 
   mesh.rotation.x = document.getElementById('myRangeX').value*Math.PI;
-  //mesh.rotation.y = document.getElementById('myRangeZ').value*Math.PI;
-  //mesh.rotation.z = document.getElementById('myRangeX').value*Math.PI;
+  mesh.rotation.y = document.getElementById('myRangeZ').value*Math.PI;
+  mesh.rotation.z = document.getElementById('myRangeX').value*Math.PI;
 
   //xyz no
   //xzy no
