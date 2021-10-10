@@ -1,8 +1,19 @@
+let x = 0
+let y = 0;
+let z = 0;
+
+
 let acl = new Accelerometer({ frequency: 60 });
 acl.addEventListener('reading', () => {
-    document.getElementById("myRangeX").value = acl.x;
-    document.getElementById("myRangeY").value = acl.y;
-    document.getElementById("myRangeZ").value = acl.z;
+    
+    let coefficient = 0.05;
+    x = x + ((acl.x - x) * coefficient);
+    y = y + ((acl.y - y) * coefficient);
+    z = z + ((acl.z - z) * coefficient);
+
+    document.getElementById("myRangeX").value = x;
+    document.getElementById("myRangeY").value = y;
+    document.getElementById("myRangeZ").value = z;
 });
 
 acl.start();
