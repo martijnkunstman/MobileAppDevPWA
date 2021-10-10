@@ -2,6 +2,13 @@ let x = 0
 let y = 0;
 let z = 0;
 
+function changeAxis()
+{
+    document.getElementById("axizx").innerHTML = document.getElementById("xaxis").value;
+    document.getElementById("axizy").innerHTML = document.getElementById("yaxis").value;
+    document.getElementById("axizz").innerHTML = document.getElementById("zaxis").value;
+}
+
 
 let acl = new Accelerometer({ frequency: 60 });
 acl.addEventListener('reading', () => {
@@ -12,6 +19,7 @@ acl.addEventListener('reading', () => {
     x = x + ((acl.x - x) * coefficient);
     y = y + ((acl.y - y) * coefficient);
     z = z + ((acl.z - z) * coefficient);
+    
 
     document.getElementById("myRangeX").value = Math.round(x * 10) / 10/gravity;
     document.getElementById("myRangeY").value = Math.round(y * 10) / 10/gravity;
@@ -89,16 +97,8 @@ function animate() {
   //mesh.rotation.y += 0.01;
 
   mesh.rotation.x = document.getElementById('myRangeX').value*Math.PI;
-  mesh.rotation.y = document.getElementById('myRangeZ').value*Math.PI;
-  mesh.rotation.z = document.getElementById('myRangeX').value*Math.PI;
-
-  //xyz no
-  //xzy no
-  //yxz no
-  //yzx
-  //zxy
-  //zyx
-
+  mesh.rotation.y = document.getElementById('myRangeY').value*Math.PI;
+  mesh.rotation.z = document.getElementById('myRangeZ').value*Math.PI;
 
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
