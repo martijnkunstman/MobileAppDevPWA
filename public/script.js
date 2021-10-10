@@ -6,18 +6,19 @@ let z = 0;
 let acl = new Accelerometer({ frequency: 60 });
 acl.addEventListener('reading', () => {
     
-    let coefficient = 0.1;
-    x = x + ((acl.x - x) * coefficient)/10;
-    y = y + ((acl.y - y) * coefficient)/10;
-    z = z + ((acl.z - z) * coefficient)/10;
+    let coefficient = 0.05;
 
-    document.getElementById("myRangeX").value = Math.round(x * 10) / 10
-    document.getElementById("myRangeY").value = Math.round(y * 10) / 10
-    document.getElementById("myRangeZ").value = Math.round(z * 10) / 10
+    x = x + ((acl.x - x) * coefficient);
+    y = y + ((acl.y - y) * coefficient);
+    z = z + ((acl.z - z) * coefficient);
+
+    document.getElementById("myRangeX").value = Math.round(x * 10) / 10;
+    document.getElementById("myRangeY").value = Math.round(y * 10) / 10;
+    document.getElementById("myRangeZ").value = Math.round(z * 10) / 10;
    
-    document.getElementById("vx").innerHTML = Math.round(x * 10) / 10
-    document.getElementById("vy").innerHTML = Math.round(y * 10) / 10
-    document.getElementById("vz").innerHTML = Math.round(z * 10) / 10
+    document.getElementById("vx").innerHTML = Math.round(x * 10) / 10;
+    document.getElementById("vy").innerHTML = Math.round(y * 10) / 10;
+    document.getElementById("vz").innerHTML = Math.round(z * 10) / 10;
 
 });
 
