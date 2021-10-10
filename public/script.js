@@ -89,8 +89,15 @@ function animate() {
   //mesh.rotation.y += 0.01;
 
   mesh.rotation.x = document.getElementById('myRangeX').value*Math.PI;
-  mesh.rotation.y = document.getElementById('myRangeY').value*Math.PI;
-  mesh.rotation.z = document.getElementById('myRangeZ').value*Math.PI;
+  mesh.rotation.y = document.getElementById('myRangeZ').value*Math.PI;
+  mesh.rotation.z = document.getElementById('myRangeY').value*Math.PI;
+
+  //xyz
+  //xzy
+  //yxz
+  //yzx
+  //zxy
+  //zyx
 
 
   renderer.render(scene, camera);
