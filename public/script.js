@@ -17,9 +17,9 @@ acl.addEventListener('reading', () => {
     document.getElementById("myRangeY").value = Math.round(y * 10) / 10/gravity;
     document.getElementById("myRangeZ").value = Math.round(z * 10) / 10/gravity;
    
-    document.getElementById("vx").innerHTML = Math.round(x*10)/10/gravity;
-    document.getElementById("vy").innerHTML = Math.round(y*10)/10/gravity;
-    document.getElementById("vz").innerHTML = Math.round(z*10)/10/gravity;
+    document.getElementById("vx").innerHTML = Math.round(x/gravity*10)/10;
+    document.getElementById("vy").innerHTML = Math.round(y/gravity*10)/10;
+    document.getElementById("vz").innerHTML = Math.round(z/gravity*10)/10;
 
 });
 
@@ -88,9 +88,9 @@ function animate() {
   //mesh.rotation.x += 0.005;
   //mesh.rotation.y += 0.01;
 
-  mesh.rotation.x = document.getElementById('myRangeX').value*Math.PI;
-  mesh.rotation.y = document.getElementById('myRangeY').value*Math.PI;
-  mesh.rotation.z = document.getElementById('myRangeZ').value*Math.PI;
+  mesh.rotation.x = document.getElementById('myRangeY').value*Math.PI;
+  mesh.rotation.y = document.getElementById('myRangeZ').value*Math.PI;
+  mesh.rotation.z = document.getElementById('myRangeY').value*Math.PI;
 
 
   renderer.render(scene, camera);
