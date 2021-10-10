@@ -88,13 +88,13 @@ function animate() {
   //mesh.rotation.x += 0.005;
   //mesh.rotation.y += 0.01;
 
-  mesh.rotation.x = document.getElementById('myRangeX').value*Math.PI;
-  mesh.rotation.y = document.getElementById('myRangeZ').value*Math.PI;
-  mesh.rotation.z = document.getElementById('myRangeY').value*Math.PI;
+  mesh.rotation.x = document.getElementById('myRangeY').value*Math.PI;
+  mesh.rotation.y = document.getElementById('myRangeX').value*Math.PI;
+  mesh.rotation.z = document.getElementById('myRangeZ').value*Math.PI;
 
-  //xyz
-  //xzy
-  //yxz
+  //xyz no
+  //xzy no
+  //yxz ??
   //yzx
   //zxy
   //zyx
