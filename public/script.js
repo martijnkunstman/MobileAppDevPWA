@@ -10,8 +10,8 @@ acl.addEventListener('reading', () => {
     let coefficient = 0.05;
 
     x = x + ((acl.x - x) * coefficient);
-    //y = y + ((acl.y - y) * coefficient);
-    //z = z + ((acl.z - z) * coefficient);
+    y = y + ((acl.y - y) * coefficient);
+    z = z + ((acl.z - z) * coefficient);
 
     document.getElementById("myRangeX").value = Math.round(x * 10) / 10/gravity;
     document.getElementById("myRangeY").value = Math.round(y * 10) / 10/gravity;
