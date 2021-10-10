@@ -14,6 +14,10 @@ acl.addEventListener('reading', () => {
     document.getElementById("myRangeX").value = x;
     document.getElementById("myRangeY").value = y;
     document.getElementById("myRangeZ").value = z;
+
+    document.getElementById("vx").innerHTML = Math.round(z * 10) / 10
+    document.getElementById("vy").innerHTML = Math.round(y * 10) / 10
+    document.getElementById("vz").innerHTML = Math.round(z * 10) / 10
 });
 
 acl.start();
