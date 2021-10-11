@@ -84,7 +84,8 @@ function init() {
     // Make a scene
     scene = new THREE.Scene();
 
-    let torusGeometry = new THREE.TorusGeometry(200, 50, 50, 50, 5);
+    let torusGeometry = new THREE.BoxGeometry(200, 200, 200);
+
     // Make a material
     var material = new THREE.MeshPhongMaterial({
         ambient: 0x00505f,
