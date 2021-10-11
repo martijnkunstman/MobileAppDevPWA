@@ -97,10 +97,11 @@ function init() {
     scene.add(torus);
 
     // Update mesh rotation using quaternion.
-    //const sensorAbs = new AbsoluteOrientationSensor();
-    //sensorAbs.onreading = () => torus.quaternion.fromArray(sensorAbs.quaternion);
-    //sensorAbs.start();
+    const sensorAbs = new AbsoluteOrientationSensor();
+    sensorAbs.onreading = () => torus.quaternion.fromArray(sensorAbs.quaternion);
+    sensorAbs.start();
 
+    /*
     // Update mesh rotation using rotation matrix.
     const sensorRel = new RelativeOrientationSensor();
     let rotationMatrix = new Float32Array(16);
@@ -109,6 +110,7 @@ function init() {
         torus.matrix.fromArray(rotationMatrix);
     };
     sensorRel.start();
+    */
 
     // Add 2 lights.
     var light1 = new THREE.PointLight(0xff0040, 2, 0);
