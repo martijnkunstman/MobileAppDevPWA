@@ -30,6 +30,16 @@ let x = 0
 let y = 0;
 let z = 0;
 
+let sensor  = new Gyroscope({frequency: 60});
+
+sensor.addEventListener('reading', e => {
+    document.getElementById("m1").innerHTML = Math.round(sensor.x*100)/100;
+    document.getElementById("m2").innerHTML = Math.round(sensor.y*100)/100;
+    document.getElementById("m3").innerHTML = Math.round(sensor.z*100)/100;
+})
+
+sensor.start();
+
 let acl = new Accelerometer({ frequency: 60 });
 acl.addEventListener('reading', () => {
 
