@@ -27,42 +27,11 @@
             <input name="myRangeZ" type="range" step="0.01" min="-1" max="1" value="0" class="slider" id="myRangeZ">
             <label class="labelSlider" for="myRangeZ">Z</label>
         </div>
-        <div id="vx">0</div>
-        <div id="vy">0</div>
-        <div id="vz">0</div>
-        <div id="axizx">-</div>
-        <div id="axizy">-</div>
-        <div id="axizz">-</div>
-        <div>
-            <select id="xaxis" onchange="changeAxis()">
-                <option value="x">x</option>
-                <option value="y">y</option>
-                <option value="z">z</option>
-                <option value="-x">-x</option>
-                <option value="-y">-y</option>
-                <option value="-z">-z</option>
-            </select>
-            <select id="yaxis" onchange="changeAxis()">
-                <option value="x">x</option>
-                <option value="y">y</option>
-                <option value="z">z</option>
-                <option value="-x">-x</option>
-                <option value="-y">-y</option>
-                <option value="-z">-z</option>
-            </select>
-            <select id="zaxis" onchange="changeAxis()">
-                <option value="x">x</option>
-                <option value="y">y</option>
-                <option value="z">z</option>
-                <option value="-x">-x</option>
-                <option value="-y">-y</option>
-                <option value="-z">-z</option>
-            </select>
-            <div id="select1"></div>
-            <div id="select2"></div>
-            <div id="select3"></div>
-        </div>
         <canvas id="canvas" width="200" height="200"></canvas>
+        <input type="text" id="textInput"/>
+        <button id="textSubmit">submit</button>
+        <div id="textData"></div>
+        
     </div>
 
 
