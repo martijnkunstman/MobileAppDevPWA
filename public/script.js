@@ -30,21 +30,13 @@ let x = 0
 let y = 0;
 let z = 0;
 
-const sensor = new AbsoluteOrientationSensor();
-const mat4 = new Float32Array(16);
-sensor.start();
-sensor.onerror = event => console.log(event.error.name, event.error.message);
-sensor.onreading = () => {
-  sensor.populateMatrix(mat4);
-  mesh.matrix.fromArray(mat4);
-};
 
-const gyroscope  = new Gyroscope({frequency: 60});
+const gyroscope = new Gyroscope({ frequency: 60 });
 
-sensor.addEventListener('reading', e => {
-    document.getElementById("m1").innerHTML = Math.round(gyroscope.x*100)/100;
-    document.getElementById("m2").innerHTML = Math.round(gyroscope.y*100)/100;
-    document.getElementById("m3").innerHTML = Math.round(gyroscope.z*100)/100;
+gyroscope.addEventListener('reading', e => {
+    document.getElementById("m1").innerHTML = Math.round(gyroscope.x * 100) / 100;
+    document.getElementById("m2").innerHTML = Math.round(gyroscope.y * 100) / 100;
+    document.getElementById("m3").innerHTML = Math.round(gyroscope.z * 100) / 100;
 })
 
 gyroscope.start();
@@ -92,9 +84,7 @@ function init() {
     // Make a scene
     scene = new THREE.Scene();
 
-    // Make a cube.
-    var geometry = new THREE.BoxGeometry(200, 200, 200);
-
+    let torusGeometry = new THREE.TorusGeometry(200, 50, 50, 50, 5);
     // Make a material
     var material = new THREE.MeshPhongMaterial({
         ambient: 0x00505f,
@@ -103,10 +93,22 @@ function init() {
         shininess: 50,
         shading: THREE.SmoothShading
     });
+    let torus = new THREE.Mesh(torusGeometry, material);
+    scene.add(torus);
 
-    // Create a mesh based on the geometry and material
-    mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+    // Update mesh rotation using quaternion.
+    const sensorAbs = new AbsoluteOrientationSensor();
+    sensorAbs.onreading = () => torus.quaternion.fromArray(sensorAbs.quaternion);
+    sensorAbs.start();
+
+    // Update mesh rotation using rotation matrix.
+    const sensorRel = new RelativeOrientationSensor();
+    let rotationMatrix = new Float32Array(16);
+    sensorRel.onreading = () => {
+        sensorRel.populateMatrix(rotationMatrix);
+        torus.matrix.fromArray(rotationMatrix);
+    };
+    sensorRel.start();
 
     // Add 2 lights.
     var light1 = new THREE.PointLight(0xff0040, 2, 0);
