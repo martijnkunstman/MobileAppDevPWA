@@ -36,21 +36,17 @@ acl.addEventListener('reading', () => {
     let gravity = 9.8;
     let coefficient = 0.05;
 
-    x = acl.x;
-    y = acl.y;
-    z = acl.z;
-
     x = x + ((acl.x - x) * coefficient);
     y = y + ((acl.y - y) * coefficient);
     z = z + ((acl.z - z) * coefficient);
 
-    document.getElementById("myRangeX").value = Math.round(x * 10) / 10 / gravity;
-    document.getElementById("myRangeY").value = Math.round(y * 10) / 10 / gravity;
-    document.getElementById("myRangeZ").value = Math.round(z * 10) / 10 / gravity;
+    document.getElementById("myRangeX").value = x / gravity;
+    document.getElementById("myRangeY").value = y / gravity;
+    document.getElementById("myRangeZ").value = z / gravity;
 
-    document.getElementById("myRangeXValue").innerHTML = Math.round(x * 10) / 10 / gravity;
-    document.getElementById("myRangeYValue").innerHTML = Math.round(y * 10) / 10 / gravity;
-    document.getElementById("myRangeZValue").innerHTML = Math.round(z * 10) / 10 / gravity;
+    document.getElementById("myRangeXValue").innerHTML = Math.round(x * 10 / gravity) / 10;
+    document.getElementById("myRangeYValue").innerHTML = Math.round(y * 10 / gravity) / 10;
+    document.getElementById("myRangeZValue").innerHTML = Math.round(z * 10 / gravity) / 10;
 
 });
 
