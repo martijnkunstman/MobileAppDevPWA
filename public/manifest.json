@@ -1,16 +1,17 @@
 {
-    "name": "My Onsen UI PWA",
-    "short_name": "Onsen PWA",
+    "name": "Martijn Kunstman PWA",
+    "short_name": "MK PWA",
+    "orientation": "portrait",
     "start_url": "/",
-    "display": "standalone",
-    "theme_color": "#ef4e2a",
-    "background_color": "#fff",
+    "display": "fullscreen",
+    "theme_color": "#aa1133",
+    "background_color": "#aa0000",
     "icons": [{
-      "src": "https://via.placeholder.com/192x192",
+      "src": "android-launchericon-192-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },{
-      "src": "https://via.placeholder.com/512x512",
+      "src": "android-launchericon-512-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }]

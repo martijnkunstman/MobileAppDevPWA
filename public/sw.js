@@ -17,7 +17,9 @@ self.addEventListener('install', function(e) {
           '/index.html',
           '/script.js',
           '/style.css',
-          '/three.min.js'
+          '/three.min.js',
+          '/android-launchericon-192-192.png',
+          '/android-launchericon-512-512.png'
         ]);
       })
     );
