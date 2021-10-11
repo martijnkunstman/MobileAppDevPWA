@@ -97,9 +97,9 @@ function init() {
     scene.add(torus);
 
     // Update mesh rotation using quaternion.
-    const sensorAbs = new AbsoluteOrientationSensor();
-    sensorAbs.onreading = () => torus.quaternion.fromArray(sensorAbs.quaternion);
-    sensorAbs.start();
+    //const sensorAbs = new AbsoluteOrientationSensor();
+    //sensorAbs.onreading = () => torus.quaternion.fromArray(sensorAbs.quaternion);
+    //sensorAbs.start();
 
     // Update mesh rotation using rotation matrix.
     const sensorRel = new RelativeOrientationSensor();
