@@ -30,15 +30,24 @@ let x = 0
 let y = 0;
 let z = 0;
 
-let sensor  = new Gyroscope({frequency: 60});
+const sensor = new AbsoluteOrientationSensor();
+const mat4 = new Float32Array(16);
+sensor.start();
+sensor.onerror = event => console.log(event.error.name, event.error.message);
+sensor.onreading = () => {
+  sensor.populateMatrix(mat4);
+  mesh.matrix.fromArray(mat4);
+};
+
+const gyroscope  = new Gyroscope({frequency: 60});
 
 sensor.addEventListener('reading', e => {
-    document.getElementById("m1").innerHTML = Math.round(sensor.x*100)/100;
-    document.getElementById("m2").innerHTML = Math.round(sensor.y*100)/100;
-    document.getElementById("m3").innerHTML = Math.round(sensor.z*100)/100;
+    document.getElementById("m1").innerHTML = Math.round(gyroscope.x*100)/100;
+    document.getElementById("m2").innerHTML = Math.round(gyroscope.y*100)/100;
+    document.getElementById("m3").innerHTML = Math.round(gyroscope.z*100)/100;
 })
 
-sensor.start();
+gyroscope.start();
 
 let acl = new Accelerometer({ frequency: 60 });
 acl.addEventListener('reading', () => {
@@ -125,9 +134,9 @@ function animate() {
     //mesh.rotation.x += 0.005;
     //mesh.rotation.y += 0.01;
 
-    mesh.rotation.x = document.getElementById('myRangeX').value * Math.PI;
-    mesh.rotation.y = document.getElementById('myRangeY').value * Math.PI;
-    mesh.rotation.z = document.getElementById('myRangeZ').value * Math.PI;
+    //mesh.rotation.x = document.getElementById('myRangeX').value * Math.PI;
+    //mesh.rotation.y = document.getElementById('myRangeY').value * Math.PI;
+    //mesh.rotation.z = document.getElementById('myRangeZ').value * Math.PI;
 
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
