@@ -1,6 +1,10 @@
+document.addEventListener("init",function(event){
+    if(event.target.id=="settings"){ 
+
 let textSubmit = document.getElementById("textSubmit");
 let textInput = document.getElementById("textInput");
 let textData = document.getElementById("textData");
+
 textSubmit.addEventListener("click", function () {
 
     fetch('/postdata', {
@@ -25,6 +29,11 @@ function getData() {
 }
 getData();
 setInterval(getData, 5000);
+    };
+
+
+if(event.target.id=="cards"){ 
+
 
 let x = 0
 let y = 0;
@@ -149,4 +158,8 @@ function animate() {
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
 }
+
+}
+});
+
 

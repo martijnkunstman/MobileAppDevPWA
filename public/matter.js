@@ -1,3 +1,7 @@
+document.addEventListener("init",function(event){
+
+  if(event.target.id=="main"){ 
+
 // module aliases
 var Engine = Matter.Engine,
   Render = Matter.Render,
@@ -11,8 +15,8 @@ engine.world.gravity.x = 0;
 engine.world.gravity.y = 0;
 
 // create a renderer
-let sizeWidth = 200;
-let sizeHeight = 200;
+let sizeWidth = 400;
+let sizeHeight = 400;
 let wallThickness = 20;
 let padding = 5;
 
@@ -100,3 +104,6 @@ joystick.on("end", function () {
   engine.world.gravity.y = 0;
 });
 */
+
+}
+});
