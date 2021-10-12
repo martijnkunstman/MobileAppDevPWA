@@ -28,9 +28,15 @@ self.addEventListener('install', function(e) {
   // 2. Intercept requests and return the cached version instead
   self.addEventListener('fetch', function(e) {
     e.respondWith(
+      /*
       // check if this file exists in the cache
       caches.match(e.request)
         // Return the cached file, or else try to get it from the server
         .then(response => response || fetch(e.request))
+        */
+        fetch(e.request).catch(function() {
+          return caches.match(e.request);
+        })
     );
   });
+  
