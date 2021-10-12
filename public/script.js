@@ -1,5 +1,5 @@
 document.addEventListener("init",function(event){
-    if(event.target.id=="settings"){ 
+    if(event.target.id=="tab3"){ 
 
 let textSubmit = document.getElementById("textSubmit");
 let textInput = document.getElementById("textInput");
@@ -32,7 +32,7 @@ setInterval(getData, 5000);
     };
 
 
-if(event.target.id=="cards"){ 
+if(event.target.id=="tab2"){ 
 
 
 let x = 0
@@ -50,6 +50,7 @@ gyroscope.addEventListener('reading', e => {
 
 gyroscope.start();
 
+/*
 let acl = new Accelerometer({ frequency: 60 });
 acl.addEventListener('reading', () => {
 
@@ -74,6 +75,7 @@ acl.addEventListener('reading', () => {
 });
 
 acl.start();
+*/
 
 // three.js webgl - cube
 // from https://webglfundamentals.org/webgl/lessons/resources/three-js-cube-with-lights.html

@@ -1,6 +1,6 @@
 document.addEventListener("init",function(event){
 
-  if(event.target.id=="main"){ 
+  if(event.target.id=="tab1"){ 
 
 // module aliases
 var Engine = Matter.Engine,
@@ -104,6 +104,30 @@ joystick.on("end", function () {
   engine.world.gravity.y = 0;
 });
 */
+let acl = new Accelerometer({ frequency: 60 });
+acl.addEventListener('reading', () => {
+
+    let gravity = 9.8;
+    let coefficient = 0.05;
+
+    x = x + ((acl.x - x) * coefficient);
+    y = y + ((acl.y - y) * coefficient);
+    z = z + ((acl.z - z) * coefficient);
+
+    document.getElementById("myRangeX").value = x / gravity;
+    document.getElementById("myRangeY").value = y / gravity;
+    document.getElementById("myRangeZ").value = z / gravity;
+
+    document.getElementById("myRangeXValue").innerHTML = Math.round(x * 10 / gravity) / 10;
+    document.getElementById("myRangeYValue").innerHTML = Math.round(y * 10 / gravity) / 10;
+    document.getElementById("myRangeZValue").innerHTML = Math.round(z * 10 / gravity) / 10;
+
+    engine.world.gravity.x = -x / gravity;
+    engine.world.gravity.y = y / gravity;
+
+});
+
+acl.start();
 
 }
 });
