@@ -11,6 +11,15 @@
     <script src="matter.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    
+    
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     <title>Document</title>
     <script>
@@ -30,21 +39,23 @@
             </ons-toolbar>
 
             <ons-tabbar position="auto">
-                <ons-tab active icon="fa-cube" label="threejs and sensor" page="tab1"></ons-tab>
-                <ons-tab icon="fa-vector-square" label="matterjs and sensor" page="tab2"></ons-tab>
-                <ons-tab icon="fa-node-js" label="nodejs read/write" page="tab3"></ons-tab>
+                <ons-tab active icon="fa-cube" label="matterjs and sensor" page="ttab1"></ons-tab>
+                <ons-tab icon="fa-vector-square" label="threejs and sensor" page="ttab2"></ons-tab>
+                <ons-tab icon="fa-node-js" label="nodejs read/write" page="ttab3"></ons-tab>
+                <ons-tab icon="fa-camera" label="camera" page="ttab4"></ons-tab>
+                <ons-tab icon="fa-globe" label="GPS" page="ttab5"></ons-tab>
             </ons-tabbar>
 
         </ons-page>
     </ons-navigator>
 
-    <template id="tab1">
+    <template id="ttab1">
         <ons-page id="tab1">
             <ons-toolbar>
                 <div class="right">
                     <ons-toolbar-button icon="fa-cube"></ons-toolbar-button>
                 </div>
-                <div class="center">threejs and sensor</div>
+                <div class="center">matterjs and sensor</div>
             </ons-toolbar>
             <div class="sliders" style="display:none;">
                 <div>
@@ -70,13 +81,13 @@
         </ons-page>
     </template>
 
-    <template id="tab2">
+    <template id="ttab2">
         <ons-page id="tab2">
             <ons-toolbar>
                 <div class="right">
                     <ons-toolbar-button icon="fa-vector-square"></ons-toolbar-button>
                 </div>
-                <div class="center">matterjs and sensor</div>
+                <div class="center">threejs and sensor</div>
             </ons-toolbar>
             <div style="justify-content: center; height: 100%; display: flex; align-items: center;"><canvas id="canvas"
                     width="300" height="300"></canvas>
@@ -84,7 +95,7 @@
         </ons-page>
     </template>
 
-    <template id="tab3">
+    <template id="ttab3">
         <ons-page id="tab3">
             <ons-toolbar>
                 <div class="right">
@@ -92,10 +103,9 @@
                 </div>
                 <div class="center">nodejs read/write</div>
             </ons-toolbar>
-            <div
-                style="justify-content: center; display: flex; align-items: center; flex-direction: column;">
+            <div style="justify-content: center; display: flex; align-items: center; flex-direction: column;">
                 <ons-input style="margin:10px;" id="textInput" modifier="underbar" placeholder="text" float></ons-input>
-                <ons-button id="textSubmit">Submit</ons-button>                
+                <ons-button id="textSubmit">Submit</ons-button>
             </div>
             <ons-card>
                 <div id="textData"></div>
@@ -104,9 +114,48 @@
         </ons-page>
     </template>
 
+    <template id="ttab4">
+        <ons-page id="tab4">
+            <ons-toolbar>
+                <div class="right">
+                    <ons-toolbar-button icon="fa-camera"></ons-toolbar-button>
+                </div>
+                <div class="center">camera</div>
+            </ons-toolbar>
+            <div id="cssfilters"
+                style="justify-content: center; height: 100%; display: flex; align-items: center; flex-direction: column;">
+                <video autoplay width="300" height="300"></video>
+                <p>
+                    <ons-button id="cssfilters-apply">Apply CSS filter</ons-button>
+                </p>
+            </div>
+        </ons-page>
+    </template>
+
+    <template id="ttab5">
+        <ons-page id="tab5">
+            <ons-toolbar>
+                <div class="right">
+                    <ons-toolbar-button icon="fa-globe"></ons-toolbar-button>
+                </div>
+                <div class="center">GPS</div>
+            </ons-toolbar>
+            <div
+                style="justify-content: center; height: 100%; display: flex; align-items: center; flex-direction: column;">
+                <p>
+                    <ons-card id="gps"></ons-card>
+                    <div id="mapid" style="height:300px; width: 300px;"></div>
+                </p>
+            </div>
+
+        </ons-page>
+    </template>
+
     <script src="onsen.js"></script>
     <script src="script.js"></script>
     <script src="matter.js"></script>
+    <script src="camera.js"></script>
+    <script src="gps.js"></script>
 </body>
 
 </html>
