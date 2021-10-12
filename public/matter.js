@@ -104,24 +104,18 @@ joystick.on("end", function () {
   engine.world.gravity.y = 0;
 });
 */
+let x = 0;
+let y = 0;
+let z = 0;
+let gravity = 9.8;
+let coefficient = 0.05;
 let acl = new Accelerometer({ frequency: 60 });
 acl.addEventListener('reading', () => {
-
-    let gravity = 9.8;
-    let coefficient = 0.05;
 
     x = x + ((acl.x - x) * coefficient);
     y = y + ((acl.y - y) * coefficient);
     z = z + ((acl.z - z) * coefficient);
-
-    document.getElementById("myRangeX").value = x / gravity;
-    document.getElementById("myRangeY").value = y / gravity;
-    document.getElementById("myRangeZ").value = z / gravity;
-
-    document.getElementById("myRangeXValue").innerHTML = Math.round(x * 10 / gravity) / 10;
-    document.getElementById("myRangeYValue").innerHTML = Math.round(y * 10 / gravity) / 10;
-    document.getElementById("myRangeZValue").innerHTML = Math.round(z * 10 / gravity) / 10;
-
+   
     engine.world.gravity.x = -x / gravity;
     engine.world.gravity.y = y / gravity;
 
