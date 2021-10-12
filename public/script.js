@@ -59,8 +59,8 @@ acl.addEventListener('reading', () => {
     document.getElementById("myRangeYValue").innerHTML = Math.round(y * 10 / gravity) / 10;
     document.getElementById("myRangeZValue").innerHTML = Math.round(z * 10 / gravity) / 10;
 
-    engine.world.gravity.x = x / gravity;
-    engine.world.gravity.y = -y / gravity;
+    engine.world.gravity.x = -x / gravity;
+    engine.world.gravity.y = y / gravity;
 
 });
 

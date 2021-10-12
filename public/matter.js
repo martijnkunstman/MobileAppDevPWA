@@ -11,8 +11,8 @@ engine.world.gravity.x = 0;
 engine.world.gravity.y = 0;
 
 // create a renderer
-let sizeWidth = 300;
-let sizeHeight = 300;
+let sizeWidth = 200;
+let sizeHeight = 200;
 let wallThickness = 20;
 let padding = 5;
 

@@ -11,38 +11,40 @@
     <script src="matter.min.js"></script>
     <title>Document</title>
     <script>
-        if('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/sw.js')
-            .then(() => console.log("Service Worker Registered"))
-            .catch(e => console.log(e));
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(() => console.log("Service Worker Registered"))
+                .catch(e => console.log(e));
         }
-      </script>
+    </script>
 </head>
 
 <body>
     <div id="container">
-        <div>
-            <label class="labelSlider" for="myRangeX" id="myRangeXValue">0</label>
-            <input name="myRangeX" type="range" step="0.01" min="-1" max="1" value="0" class="slider" id="myRangeX">
-            <label class="labelSlider" for="myRangeX">X</label>
-        </div>
-        <div>
-            <label class="labelSlider" for="myRangeY" id="myRangeYValue">0</label>
-            <input name="myRangeY" type="range" step="0.01" min="-1" max="1" value="0" class="slider" id="myRangeY">
-            <label class="labelSlider" for="myRangeY">Y</label>
-        </div>
-        <div>
-            <label class="labelSlider" for="myRangeZ" id="myRangeZValue">0</label>
-            <input name="myRangeZ" type="range" step="0.01" min="-1" max="1" value="0" class="slider" id="myRangeZ">
-            <label class="labelSlider" for="myRangeZ">Z</label>
+        <div class="sliders" style="display:none;">
+            <div>
+                <label class="labelSlider" for="myRangeX" id="myRangeXValue">0</label>
+                <input name="myRangeX" type="range" step="0.01" min="-1" max="1" value="0" class="slider" id="myRangeX">
+                <label class="labelSlider" for="myRangeX">X</label>
+            </div>
+            <div>
+                <label class="labelSlider" for="myRangeY" id="myRangeYValue">0</label>
+                <input name="myRangeY" type="range" step="0.01" min="-1" max="1" value="0" class="slider" id="myRangeY">
+                <label class="labelSlider" for="myRangeY">Y</label>
+            </div>
+            <div>
+                <label class="labelSlider" for="myRangeZ" id="myRangeZValue">0</label>
+                <input name="myRangeZ" type="range" step="0.01" min="-1" max="1" value="0" class="slider" id="myRangeZ">
+                <label class="labelSlider" for="myRangeZ">Z</label>
+            </div>
         </div>
         <div id="matter"></div>
-        <canvas id="canvas" width="300" height="300"></canvas>
-        <input type="text" id="textInput"/>
-        <button id="textSubmit">submit</button>
+        <canvas id="canvas" width="200" height="200"></canvas>
+        <div>
+            <input type="text" id="textInput" style="margin:5px; display: inline;" />
+            <button id="textSubmit" style="margin:5px; display: inline;">submit</button>
+        </div>
         <div id="textData"></div>
-        
-        
     </div>
 
 
