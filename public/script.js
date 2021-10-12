@@ -34,9 +34,9 @@ let z = 0;
 const gyroscope = new Gyroscope({ frequency: 60 });
 
 gyroscope.addEventListener('reading', e => {
-    document.getElementById("m1").innerHTML = Math.round(gyroscope.x * 100) / 100;
-    document.getElementById("m2").innerHTML = Math.round(gyroscope.y * 100) / 100;
-    document.getElementById("m3").innerHTML = Math.round(gyroscope.z * 100) / 100;
+    //document.getElementById("m1").innerHTML = Math.round(gyroscope.x * 100) / 100;
+    //document.getElementById("m2").innerHTML = Math.round(gyroscope.y * 100) / 100;
+    //document.getElementById("m3").innerHTML = Math.round(gyroscope.z * 100) / 100;
 })
 
 gyroscope.start();
@@ -58,6 +58,9 @@ acl.addEventListener('reading', () => {
     document.getElementById("myRangeXValue").innerHTML = Math.round(x * 10 / gravity) / 10;
     document.getElementById("myRangeYValue").innerHTML = Math.round(y * 10 / gravity) / 10;
     document.getElementById("myRangeZValue").innerHTML = Math.round(z * 10 / gravity) / 10;
+
+    engine.world.gravity.x = x / gravity;
+    engine.world.gravity.y = -y / gravity;
 
 });
 
