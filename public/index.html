@@ -30,9 +30,9 @@
             </ons-toolbar>
 
             <ons-tabbar position="auto">
-                <ons-tab active icon="ion-ios-home" label="threejs and sensor" page="tab1" ></ons-tab>
-                <ons-tab icon="ion-ios-card" label="matterjs and sensor" page="tab2"></ons-tab>
-                <ons-tab icon="ion-ios-cog" label="read/write file" page="tab3"></ons-tab>
+                <ons-tab active icon="fa-cube" label="threejs and sensor" page="tab1" ></ons-tab>
+                <ons-tab icon="fa-vector-square" label="matterjs and sensor" page="tab2"></ons-tab>
+                <ons-tab icon="fa-node-js" label="nodejs read/write" page="tab3"></ons-tab>
             </ons-tabbar>
             
         </ons-page>
@@ -40,7 +40,12 @@
 
     <template id="tab1">
         <ons-page id="tab1">
-            <h2>threejs and sensor</h2>          
+            <ons-toolbar>
+                <div class="right">
+                  <ons-toolbar-button icon="fa-cube"></ons-toolbar-button>
+                </div>
+                <div class="center">threejs and sensor</div>
+              </ons-toolbar>       
             <div class="sliders" style="display:none;">
                 <div>
                     <label class="labelSlider" for="myRangeX" id="myRangeXValue">0</label>
@@ -67,7 +72,12 @@
 
     <template id="tab2">
         <ons-page id="tab2">
-            <h2>matterjs and sensor</h2>
+            <ons-toolbar>
+                <div class="right">
+                  <ons-toolbar-button icon="fa-vector-square"></ons-toolbar-button>
+                </div>
+                <div class="center">matterjs and sensor</div>
+              </ons-toolbar>
             <div style="text-align: center"><canvas id="canvas" width="300" height="300"></canvas>
             </div>
         </ons-page>
@@ -75,7 +85,12 @@
 
     <template id="tab3">
         <ons-page id="tab3">
-            <h2>read/write file</h2>
+            <ons-toolbar>
+                <div class="right">
+                  <ons-toolbar-button icon="fa-node-js"></ons-toolbar-button>
+                </div>
+                <div class="center">nodejs read/write</div>
+              </ons-toolbar>
             <div>
                 <input type="text" id="textInput" style="margin:5px; display: inline;" />
                 <button id="textSubmit" style="margin:5px; display: inline;">submit</button>
