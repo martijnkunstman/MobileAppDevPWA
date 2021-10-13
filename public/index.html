@@ -10,16 +10,16 @@
     <script src="three.min.js"></script>
     <script src="matter.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
-    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
-    
+    <link id="theme" rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin=""/>
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
-    
-    
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     <title>Document</title>
     <script>
@@ -32,31 +32,120 @@
 </head>
 
 <body>
-    <ons-navigator id="myNavigator">
+
+    <ons-navigator id="myNavigator" page="splitter.html">
+    </ons-navigator>
+
+    <template id="splitter.html">
+        <ons-page>
+            <ons-splitter id="mySplitter">
+                <ons-splitter-side id="menu" page="menutemplate" swipeable width="250px" collapse
+                    swipe-target-width="50px" side="right">
+                </ons-splitter-side>
+                <ons-splitter-content id="content" page="tabbartemplate">
+                </ons-splitter-content>
+            </ons-splitter>
+        </ons-page>
+    </template>
+
+    <template id="menutemplate">
+        <ons-page>
+            <ons-list>
+                <ons-list-item onclick="setTab(0);" tappable>
+                    <div class="left"><ons-icon icon="fa-home"></ons-icon>                 </div>
+                    <div class="center">Home</div>
+                </ons-list-item>
+
+                <ons-list-item onclick="setTab(1);" tappable>
+                    <div class="left"><ons-icon icon="fa-vector-square"></ons-icon>                 </div>
+                    <div class="center">Matterjs and sensor</div>
+                </ons-list-item>
+                <ons-list-item onclick="setTab(2);" tappable>
+                    <div class="left"><ons-icon icon="fa-cube"></ons-icon>                 </div>
+                    <div class="center">Threejs and sensor</div>
+                </ons-list-item>
+                <ons-list-item onclick="setTab(3);" tappable>
+                    <div class="left"><ons-icon icon="fa-node-js"></ons-icon>                 </div>
+                    <div class="center">Nodejs read/write</div>
+                </ons-list-item>
+                <ons-list-item onclick="setTab(4);" tappable>
+                    <div class="left"><ons-icon icon="fa-camera"></ons-icon>                 </div>
+                    <div class="center">Camera and CSS filters</div>
+                </ons-list-item>
+                <ons-list-item onclick="setTab(5);" tappable>
+                    <div class="left"><ons-icon icon="fa-globe"></ons-icon>                 </div>
+                    <div class="center">GPS and map</div>
+                </ons-list-item>
+
+
+
+                <ons-list-item onclick="setTab(6);" tappable>
+                    <div class="left"><ons-icon icon="fa-cog"></ons-icon>                 </div>
+                    <div class="center">Settings</div>
+                </ons-list-item>
+            </ons-list>
+        </ons-page>
+    </template>
+
+    <template id="tabbartemplate">
         <ons-page>
             <ons-toolbar>
-                <div class="center">PWA Demo</div>
+                <div class="left">
+                    <ons-toolbar-button>
+                        <ons-icon icon="fa-home"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="right">
+                    <ons-toolbar-button onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center" id="titletoolbar">Home</div>
             </ons-toolbar>
-
-            <ons-tabbar position="auto">
-                <ons-tab active icon="fa-vector-square" label="1" page="ttab1"></ons-tab>
-                <ons-tab icon="fa-cube" label="2" page="ttab2"></ons-tab>
-                <ons-tab icon="fa-node-js" label="3" page="ttab3"></ons-tab>
-                <ons-tab icon="fa-camera" label="4" page="ttab4"></ons-tab>
-                <ons-tab icon="fa-globe" label="5" page="ttab5"></ons-tab>
+            <ons-tabbar position="bottom" swipeable>
+                <ons-tab icon="fa-home" active style="display: none;" label="" page="hometemplate" title="Home">
+                </ons-tab>
+                <ons-tab icon="fa-vector-square" label="" title="Matterjs and sensor" page="ttab1"></ons-tab>
+                <ons-tab icon="fa-cube" label="" page="ttab2" title="Threejs and sensor"></ons-tab>
+                <ons-tab icon="fa-node-js" label="" page="ttab3" title="Nodejs read/write"></ons-tab>
+                <ons-tab icon="fa-camera" label="" page="ttab4" title="Camera and CSS filters"></ons-tab>
+                <ons-tab icon="fa-globe" label="" page="ttab5" title="GPS and map"></ons-tab>
+                <ons-tab icon="fa-cog" style="display: none;" label="" page="settingtemplate" title="Settings">
+                </ons-tab>
             </ons-tabbar>
-
         </ons-page>
-    </ons-navigator>
+    </template>
+
+    <template id="settingtemplate">
+        <ons-page id="settings">
+
+            <ons-list>
+
+                <ons-list-item>
+                  <div class="center">
+                    Enable darkmode
+                  </div>
+                  <div class="right">
+                    <ons-switch onclick="if (this.checked){document.querySelector('#theme').setAttribute('href', 'https://unpkg.com/onsenui/css/dark-onsen-css-components.min.css');}else{document.querySelector('#theme').setAttribute('href', 'https://unpkg.com/onsenui/css/onsen-css-components.min.css');}"></ons-switch>
+                  </div>
+                </ons-list-item>               
+                
+              </ons-list>
+
+            
+        </ons-page>
+    </template>
+
+    <template id="hometemplate">
+        <ons-page id="home">
+            <div style="justify-content: center; height: 100%; display: flex; align-items: center;">
+                PWA demo (v14-10-2021)
+            </div>
+        </ons-page>
+    </template>
 
     <template id="ttab1">
         <ons-page id="tab1">
-            <ons-toolbar>
-                <div class="right">
-                    <ons-toolbar-button icon="fa-vector-square"></ons-toolbar-button>
-                </div>
-                <div class="center">matterjs and sensor</div>
-            </ons-toolbar>
             <div class="sliders" style="display:none;">
                 <div>
                     <label class="labelSlider" for="myRangeX" id="myRangeXValue">0</label>
@@ -83,12 +172,6 @@
 
     <template id="ttab2">
         <ons-page id="tab2">
-            <ons-toolbar>
-                <div class="right">
-                    <ons-toolbar-button icon="fa-cube"></ons-toolbar-button>
-                </div>
-                <div class="center">threejs and sensor</div>
-            </ons-toolbar>
             <div style="justify-content: center; height: 100%; display: flex; align-items: center;"><canvas id="canvas"
                     width="300" height="300"></canvas>
             </div>
@@ -97,12 +180,6 @@
 
     <template id="ttab3">
         <ons-page id="tab3">
-            <ons-toolbar>
-                <div class="right">
-                    <ons-toolbar-button icon="fa-node-js"></ons-toolbar-button>
-                </div>
-                <div class="center">nodejs read/write</div>
-            </ons-toolbar>
             <div style="justify-content: center; display: flex; align-items: center; flex-direction: column;">
                 <ons-input style="margin:10px;" id="textInput" modifier="underbar" placeholder="text" float></ons-input>
                 <ons-button id="textSubmit">Submit</ons-button>
@@ -116,12 +193,6 @@
 
     <template id="ttab4">
         <ons-page id="tab4">
-            <ons-toolbar>
-                <div class="right">
-                    <ons-toolbar-button icon="fa-camera"></ons-toolbar-button>
-                </div>
-                <div class="center">camera</div>
-            </ons-toolbar>
             <div id="cssfilters"
                 style="justify-content: center; height: 100%; display: flex; align-items: center; flex-direction: column;">
                 <video autoplay width="300" height="300"></video>
@@ -134,12 +205,6 @@
 
     <template id="ttab5">
         <ons-page id="tab5">
-            <ons-toolbar>
-                <div class="right">
-                    <ons-toolbar-button icon="fa-globe"></ons-toolbar-button>
-                </div>
-                <div class="center">GPS</div>
-            </ons-toolbar>
             <div
                 style="justify-content: center; height: 100%; display: flex; align-items: center; flex-direction: column;">
                 <p>

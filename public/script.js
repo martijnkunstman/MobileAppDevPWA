@@ -1,4 +1,35 @@
+function setTab(index) {
+    document.querySelector('ons-tabbar').setActiveTab(index);
+    document.querySelector('ons-splitter-side').close();
+}
+
 document.addEventListener("init", function (event) {
+
+    document.addEventListener('prechange', function (event) {
+        document.querySelector('ons-toolbar .center').innerHTML = event.tabItem.getAttribute('title');
+        document.querySelector('ons-toolbar .left ons-icon').setAttribute('icon', event.tabItem.getAttribute('icon'));
+        //document.querySelector('ons-splitter-side').close();
+    });
+
+
+
+    window.fn = {};
+
+    window.fn.open = function () {
+        var menu = document.getElementById('menu');
+        menu.open();
+    };
+
+    /*
+    window.fn.load = function (page) {
+        var content = document.getElementById('content');
+        var menu = document.getElementById('menu');
+        content.load(page)
+            .then(menu.close.bind(menu));
+    };
+    */
+
+
     if (event.target.id == "tab3") {
 
         let textSubmit = document.getElementById("textSubmit");
