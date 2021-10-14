@@ -1,3 +1,14 @@
+//wishes: push messages / notifications
+//          websocket controller
+//          websocket draw board
+//          authentication
+//          crud
+//          image manipulation
+//          responsive canvases 
+
+
+
+
 function setTab(index) {
     document.querySelector('ons-tabbar').setActiveTab(index);
     document.querySelector('ons-splitter-side').close();
@@ -28,6 +39,10 @@ document.addEventListener("init", function (event) {
             .then(menu.close.bind(menu));
     };
     */
+
+
+
+    
 
 
     if (event.target.id == "tab3") {
@@ -194,5 +209,6 @@ document.addEventListener("init", function (event) {
 
     }
 });
+
 
 

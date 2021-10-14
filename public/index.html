@@ -39,7 +39,7 @@
     <template id="splitter.html">
         <ons-page>
             <ons-splitter id="mySplitter">
-                <ons-splitter-side id="menu" page="menutemplate" swipeable width="250px" collapse
+                <ons-splitter-side id="menu" page="menutemplate"  width="250px" collapse
                     swipe-target-width="50px" side="right">
                 </ons-splitter-side>
                 <ons-splitter-content id="content" page="tabbartemplate">
@@ -76,8 +76,11 @@
                     <div class="left"><ons-icon icon="fa-globe"></ons-icon>                 </div>
                     <div class="center">GPS and map</div>
                 </ons-list-item>
-
-
+                <ons-list-item onclick="setTab(6);" tappable>
+                    <div class="left"><ons-icon icon="fa-pen"></ons-icon>                 </div>
+                    <div class="center">Websocket canvas</div>
+                </ons-list-item>
+                
 
                 <ons-list-item onclick="setTab(6);" tappable>
                     <div class="left"><ons-icon icon="fa-cog"></ons-icon>                 </div>
@@ -110,6 +113,7 @@
                 <ons-tab icon="fa-node-js" label="" page="ttab3" title="Nodejs read/write"></ons-tab>
                 <ons-tab icon="fa-camera" label="" page="ttab4" title="Camera and CSS filters"></ons-tab>
                 <ons-tab icon="fa-globe" label="" page="ttab5" title="GPS and map"></ons-tab>
+                <ons-tab icon="fa-pen" label="" page="ttab6" title="Websocket canvas"></ons-tab>
                 <ons-tab icon="fa-cog" style="display: none;" label="" page="settingtemplate" title="Settings">
                 </ons-tab>
             </ons-tabbar>
@@ -138,8 +142,9 @@
 
     <template id="hometemplate">
         <ons-page id="home">
-            <div style="justify-content: center; height: 100%; display: flex; align-items: center;">
-                PWA demo (v14-10-2021)
+            <div style="justify-content: center; height: 100%; display: flex; align-items: center; flex-direction: column;">
+                <div><h1>PWA demo</h1></div>
+                <div>(v14-10-2021)</div>
             </div>
         </ons-page>
     </template>
@@ -216,11 +221,29 @@
         </ons-page>
     </template>
 
+    <template id="ttab6">
+        <ons-page id="tab6">
+            <div style="justify-content: center; height: 100%; display: flex; align-items: center; flex-direction: column;">
+                canvas
+                <canvas style="border: 1px solid black" class="whiteboard" width="300" height="300"></canvas>
+
+                <div class="colors">
+                  <div class="color black"></div>
+                  <div class="color red"></div>
+                  <div class="color green"></div>
+                  <div class="color blue"></div>
+                  <div class="color yellow"></div>
+                </div>
+            </div>
+        </ons-page>
+    </template>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="onsen.js"></script>
     <script src="script.js"></script>
     <script src="matter.js"></script>
     <script src="camera.js"></script>
     <script src="gps.js"></script>
+    <script src="canvassocket.js"></script>
 </body>
 
 </html>

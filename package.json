@@ -20,6 +20,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "fs": "0.0.1-security",
+    "socket.io": "^4.2.0",
     "three": "^0.133.1"
   }
 }
